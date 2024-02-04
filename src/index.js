@@ -48,8 +48,10 @@ function removeProduct(event) {
 //  console.log('The product row to be removed:', actions);
 // set the action's parent node HTML content to '', which equals to removing the entire <tr>
 actions.parentNode.innerHTML = ''
+if (actions) {
+  actions.remove();
 }
-
+}
 
 
 const removeButtons = document.querySelectorAll('.btn-remove');

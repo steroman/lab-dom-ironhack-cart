@@ -26,7 +26,7 @@ function calculateAll() {
 const product = document.querySelectorAll(".product")
 // Define a total variable to store total and set it to 0
 let total = 0
-// Create a loop that goes through each occurrence of the previous product variable
+// Create a loop that goes through each occurrence of the previous product variable and sets it as the item of the singleProduct variable
 for (let i = 0; i < product.length; i++) {
   let singleProduct = product[i]
 // Calculate total by summing all the subtotals obtained with the for loop and calling the function that calculates the subtotal
@@ -41,11 +41,24 @@ totalCart.innerHTML = total
 
 // ITERATION 4
 
+// function to remove products when the Remove button is clicked
 function removeProduct(event) {
-  const target = event.currentTarget;
-  console.log('The target in remove is:', target);
-  //... your code goes here
+// target the action class (it's a <td>), where the <button> tag is contained
+  const actions = document.querySelector('.action');
+//  console.log('The product row to be removed:', actions);
+// set the action's parent node HTML content to '', which equals to removing the entire <tr>
+actions.parentNode.innerHTML = ''
 }
+
+
+
+const removeButtons = document.querySelectorAll('.btn-remove');
+removeButtons.forEach(btn => {
+  btn.addEventListener('click', removeProduct);
+});
+
+// use parentNode to access TR to remove
+
 
 // ITERATION 5
 

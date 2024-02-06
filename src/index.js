@@ -43,16 +43,14 @@ totalCart.innerHTML = total
 
 // function to remove products when the Remove button is clicked
 function removeProduct(event) {
-// target the action class (it's a <td>), where the <button> tag is contained
-  const actions = document.querySelector('.action');
-//  console.log('The product row to be removed:', actions);
-// set the action's parent node HTML content to '', which equals to removing the entire <tr>
-actions.parentNode.innerHTML = ''
-if (actions) {
-  actions.remove();
+  // event.currentTarget listens to the event on whatever element is clicked
+  const target = event.currentTarget;
+  // console.log('The target in remove is:', target);
+  // The following line navigates 2 parents up from the target and removes the element, leaving the row empty
+  target.parentNode.parentNode.remove();
+  // Calculate the total again
+  calculateAll();
 }
-}
-
 
 const removeButtons = document.querySelectorAll('.btn-remove');
 removeButtons.forEach(btn => {
